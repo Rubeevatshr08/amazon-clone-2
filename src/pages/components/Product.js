@@ -1,5 +1,5 @@
 import React from 'react';
-import Currency from 'react-currency-formatter';
+
 function Product({ id, title, price, description, category, image }) {
     return (
         <div className="relative flex flex-col m-5 bg-white z-30 p-10 text-black">
@@ -11,7 +11,7 @@ function Product({ id, title, price, description, category, image }) {
                 <p >{description}</p>
             </div>
             <div className="mb-5 my-5 font-bold">
-                <Currency quantity={price} currency="USD" />
+                <p>${price}</p>
             </div>
             <button className="mt-auto button ">Add to Basket</button>
         </div>
