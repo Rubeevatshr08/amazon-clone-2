@@ -14,6 +14,7 @@
     "@stripe/stripe-js": "^5.6.0",
     "@tailwindcss/line-clamp": "^0.4.4",
     "axios": "^1.7.9",
+    "currencyformatter.js": "^2.2.0",
     "firebase": "^11.2.0",
     "lucide-react": "^0.474.0",
     "next": "15.1.6",
