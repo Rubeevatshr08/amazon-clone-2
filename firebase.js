@@ -1,9 +1,14 @@
-import firebase from "firebase";
+import { initializeApp, getApps, getApp } from "firebase/app";
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+
 const firebaseConfig = {
-    apiKey: "AIzaSyCCRJUMjW4Y5PBI3sTpx19lztRStVGqvL0",
-    authDomain: "clone-2-cd475.firebaseapp.com",
-    projectId: "clone-2-cd475",
-    storageBucket: "clone-2-cd475.firebasestorage.app",
-    messagingSenderId: "402363098547",
-    appId: "1:402363098547:web:eb73fc59cd07e39cb797c6"
+    apiKey: process.env.FIREBASE_FIREBASE_APIKEY,
+    authDomain: process.env.FIREBASE_AUTHDOMAIN,
+    projectId: process.env.FIREBASE_PROJECTID,
+    storageBucket: process.env.FIREBASE_STORAGEBUCKET,
+    messagingSenderId: process.env.FIREBASE_MESSAGINGSENDERID,
+    appId: process.env.FIREBASE_APPID
 };
+
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+export const db = getFirestore(app);

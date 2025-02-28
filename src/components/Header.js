@@ -30,7 +30,16 @@ export default function Header() {
                         <p>{session ? `Hello ${session?.user?.name}` : "Sign In"}</p> {/* Optional chaining */}
                         <p className="font-extrabold">Accounts & lists</p>
                     </div>
-                    <div className="link">
+                    <div onClick={() => router.push("/wallet")} className="link"> {/* Conditional sign in/out */}
+                        {
+                            session ?
+                                <div className="link"> {/* Conditional sign in/out */}
+                                    <p>Wallet Balance</p> {/* Optional chaining */}
+                                    <p className="font-extrabold">${session.user ? session.user.balance : "0"}</p>
+                                </div> : <></>
+                        }
+                    </div>
+                    <div onClick={() => router.push("/orders")} className="link">
                         <p>Returns</p>
                         <p className="font-extrabold"> & Orders </p>
                     </div>

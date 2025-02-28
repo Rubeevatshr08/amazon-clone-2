@@ -6,6 +6,9 @@ import Banner from "../components/Banner";
 import Productfeed from "../components/Productfeed";
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { getServerSession } from "next-auth/next";
+import { getSession } from "next-auth/react";
+
 
 
 export default function Home({ products }) {
@@ -15,6 +18,7 @@ export default function Home({ products }) {
       <main>
         <div className="max-w-screen-2xl mx-auto">
           <Banner />
+
           <Productfeed products={products} />
         </div>
       </main>
@@ -22,6 +26,7 @@ export default function Home({ products }) {
   );
 }
 export async function getServerSideProps(context) {
+  const session = await getSession(context);
   const products = await fetch('https://fakestoreapi.com/products').then(
     (res) => res.json()
   );
@@ -29,6 +34,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       products,
+      session,
     },
   };
 }
